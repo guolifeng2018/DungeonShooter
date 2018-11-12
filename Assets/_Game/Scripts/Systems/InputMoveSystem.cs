@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 
-public class InputSystem : ComponentSystem
+public class InputMoveSystem : ComponentSystem
 {
     struct InputComponents
     {
