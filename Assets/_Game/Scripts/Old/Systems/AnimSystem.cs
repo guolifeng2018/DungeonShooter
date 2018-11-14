@@ -6,7 +6,6 @@ public class AnimSystem : ComponentSystem
     struct SpriteComponents
     {
         public SpriteComponent m_sprite;
-        public Animator m_animator;
     }
 
     protected override void OnUpdate()
@@ -16,7 +15,10 @@ public class AnimSystem : ComponentSystem
         {
             if (e.m_sprite.m_switch)
             {
-                e.m_animator.Play(e.m_sprite.m_animType.ToString());
+                if (e.m_sprite.m_animator != null)
+                {
+                    e.m_sprite.m_animator.Play(e.m_sprite.m_animType.ToString());
+                }
             }
         }
     }

@@ -12,6 +12,7 @@ public enum EAnimType
 public class SpriteComponent : MonoBehaviour
 {
     public EAnimType m_animType = EAnimType.fish_man_idle;
+    public Animator m_animator;
     public bool m_switch = false; 
 
     public void SetAnimType(EAnimType animType)
