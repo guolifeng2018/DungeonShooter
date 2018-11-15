@@ -680,6 +680,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04188f1b79a82458ba8b638af0e00d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1468147768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1468147765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 453ab30340e934f93a0783e29d79025c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_gunId: 0
+  m_gunName: "\u521D\u72480\u53F7"
+  m_gunDescription: "\u521D\u7248\u96F6\u53F7\u67AA\uFF0C\u867D\u7136\u8FD8\u6709\u5F88\u591A\u7455\u75B5\uFF0C\u4F46\u662F\u5C1A\u53EF\u4F7F\u7528\u3002"
+  m_bulletCount: 100
+  m_fireRate: 50
+  m_recoil: 5
+  m_precision: 0.4
+  m_precisionAngle: 60
+  m_gunResName: gun_001
+  m_bulletId: 0
 --- !u!1001 &1655126254
 Prefab:
   m_ObjectHideFlags: 0

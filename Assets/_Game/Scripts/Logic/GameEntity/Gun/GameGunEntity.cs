@@ -1,15 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class GameGunEntity : GameEntityBase
 {
+    #region Construction
+
+    protected GameGunProps m_props;
+
+    #endregion
+
     protected Vector3 m_direction;
     
     public override void Init()
     {
-        throw new System.NotImplementedException();
+        //初始化属性
+        m_props = new GameGunProps();
+
+
     }
 
     public override void Dispose()

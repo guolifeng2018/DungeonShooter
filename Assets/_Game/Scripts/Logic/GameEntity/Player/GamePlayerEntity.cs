@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class GamePlayerEntity : GameEntityBase
 {
+#if UNITY_EDITOR || UNITY_EDITOR_64 || UNITY_EDITOR_WIN
     public GameGunEntity m_testGunEntity;
-    
+#endif
+
     #region Construction
 
     /// <summary>
@@ -64,9 +66,12 @@ public class GamePlayerEntity : GameEntityBase
 
         //玩家输入系统
         KeyBoardInputManager.GetInstance().AddMoveAction(Move);
-        
+
+
+#if UNITY_EDITOR || UNITY_EDITOR_64 || UNITY_EDITOR_WIN
         //test
         PicUpTheGun(m_testGunEntity);
+#endif
     }
 
     public override void Dispose()
