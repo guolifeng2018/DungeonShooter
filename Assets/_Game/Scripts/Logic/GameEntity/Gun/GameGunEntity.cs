@@ -8,6 +8,8 @@ public class GameGunEntity : GameEntityBase
 
     protected GameGunProps m_props;
 
+    protected BulletLauncherBase m_bulletLauncher;
+
     #endregion
 
     protected Vector3 m_direction;
@@ -17,12 +19,12 @@ public class GameGunEntity : GameEntityBase
         //初始化属性
         m_props = new GameGunProps();
 
-
+        m_bulletLauncher = BulletLauncherBase.CreateBulletLauncherBase(m_props.m_bulletLauncherData);
     }
 
     public override void Dispose()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     #region UpdateDirection
@@ -46,7 +48,14 @@ public class GameGunEntity : GameEntityBase
 
     public void Fire()
     {
+        if (m_bulletLauncher != null)
+        {
+            m_bulletLauncher.Fire();
+        }
         
+        //todo:显示枪口喷火
+        
+        //todo:枪开始播放后坐力
     }
 
     #endregion
