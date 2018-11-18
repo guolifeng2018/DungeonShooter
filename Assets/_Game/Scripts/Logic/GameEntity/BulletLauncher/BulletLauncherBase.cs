@@ -15,16 +15,20 @@ public abstract class BulletLauncherBase
     {
         m_launcherType = type;
     }
-    
-    public abstract void Fire();
 
-    public static BulletLauncherBase CreateBulletLauncherBase(BulletLauncherDataBase data)
+    public abstract bool IsFiring();
+
+    public abstract float FireRate();
+    
+    public abstract void Fire(Vector3 direction);
+
+    public static BulletLauncherBase CreateBulletLauncherBase(BulletLauncherDataBase data, GameObject gameObject)
     {
         BulletLauncherBase launcher = null;
         switch (data.m_launcherType)
         {
                 case EBulletLauncherType.SingleBullet:
-                    launcher = new SingleBulletLauncher(data);
+                    launcher = new SingleBulletLauncher(data, gameObject);
                     break;
                 case EBulletLauncherType.Laser:
                     break;
@@ -34,6 +38,6 @@ public abstract class BulletLauncherBase
         {
             Debug.LogError("Launcher is null :   " + data.m_launcherType);
         }
-        return null;
+        return launcher;
     }
 }

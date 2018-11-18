@@ -4,6 +4,7 @@ using UnityEngine;
 public class KeyBoardInputManager : MonoSingletonBase<KeyBoardInputManager>
 {
     private Action<Vector2> MoveAction;
+    private Action FireAction;
 
     protected override void MonoAwake()
     {
@@ -22,7 +23,29 @@ public class KeyBoardInputManager : MonoSingletonBase<KeyBoardInputManager>
         MoveAction += action;
     }
 
+    public void RemoveMoveAction(Action<Vector2> action)
+    {
+        MoveAction -= action;
+    }
+
+    public void AddFireAction(Action action)
+    {
+        FireAction += action;
+    }
+
+    public void RemoveFireAction(Action action)
+    {
+        FireAction -= action;
+    }
+
     private void Update()
+    {
+        HandleMoveAction();
+
+        HandleFireAction();
+    }
+
+    private void HandleMoveAction()
     {
         Vector2 direction = Vector2.zero;
         if (Input.GetKey(KeyCode.W))
@@ -47,5 +70,13 @@ public class KeyBoardInputManager : MonoSingletonBase<KeyBoardInputManager>
 
         direction = direction.normalized;
         MoveAction?.Invoke(direction);
+    }
+
+    private void HandleFireAction()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            FireAction?.Invoke();
+        }
     }
 }

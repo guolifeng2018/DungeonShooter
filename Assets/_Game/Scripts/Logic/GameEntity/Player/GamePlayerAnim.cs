@@ -44,7 +44,7 @@ public class GamePlayerAnim
 
     private void InitAnimator(GameObject player)
     {
-        m_animator = player.GetComponentInChildren<Animator>();
+        m_animator = ObjectCommon.GetChildComponent<Animator>(player, "player");
         if (m_animator == null)
         {
             Debug.LogError("Animator cannot find!!");

@@ -33,9 +33,4 @@ public class GameGunProps :MonoBehaviour
     /// 枪械prefab名称
     /// </summary>
     public string m_gunResName = "gun_001";
-
-    /// <summary>
-    /// 子弹名称
-    /// </summary>
-    public int m_bulletId = 0;
 }

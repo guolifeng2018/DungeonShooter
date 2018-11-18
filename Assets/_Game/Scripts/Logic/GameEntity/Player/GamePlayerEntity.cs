@@ -33,7 +33,6 @@ public class GamePlayerEntity : GameEntityBase
 
     #endregion
     
-
     protected Vector2 m_direction;
     protected bool m_beHurt;
     protected bool m_faceToRight = true;
@@ -66,10 +65,12 @@ public class GamePlayerEntity : GameEntityBase
 
         //玩家输入系统
         KeyBoardInputManager.GetInstance().AddMoveAction(Move);
+        KeyBoardInputManager.GetInstance().AddFireAction(Fire);
 
 
 #if UNITY_EDITOR || UNITY_EDITOR_64 || UNITY_EDITOR_WIN
         //test
+        m_testGunEntity.Init();
         PicUpTheGun(m_testGunEntity);
 #endif
     }
@@ -144,9 +145,16 @@ public class GamePlayerEntity : GameEntityBase
 
     #endregion
 
-    #region Firing
+    #region Fire
 
-    public virtual void Firing() { }
+    public virtual void Fire()
+    {
+        GameGunEntity gun = CurrentGun;
+        if (gun != null)
+        {
+            gun.Fire();
+        }
+    }
 
     #endregion
 
