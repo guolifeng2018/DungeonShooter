@@ -11,7 +11,7 @@ public class SingleBulletLauncherData : BulletLauncherDataBase
     /// <summary>
     /// 射击速度
     /// </summary>
-    public float m_fireRate = 0.2f;
+    public float m_fireRate = 0.08f;
 
     /// <summary>
     /// 精准度
@@ -26,12 +26,12 @@ public class SingleBulletLauncherData : BulletLauncherDataBase
     /// <summary>
     /// 子弹生存时间
     /// </summary>
-    public float m_lifeTime = 3f;
+    public float m_lifeTime = 1f;
 
     /// <summary>
     /// 子弹速度
     /// </summary>
-    public float m_bulletSpeed = 5f;
+    public float m_bulletSpeed = 8f;
 
     /// <summary>
     /// 子弹发射动画

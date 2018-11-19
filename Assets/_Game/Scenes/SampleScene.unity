@@ -599,6 +599,7 @@ GameObject:
   - component: {fileID: 856125285}
   - component: {fileID: 856125284}
   - component: {fileID: 856125286}
+  - component: {fileID: 856125287}
   m_Layer: 0
   m_Name: bullet_001
   m_TagString: Untagged
@@ -708,6 +709,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &856125287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 856125282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8fa2e9427d03e745bfa440551dce06f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1181718629
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,6 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04188f1b79a82458ba8b638af0e00d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_tempBullet: {fileID: 856125287}
 --- !u!114 &1468147768
 MonoBehaviour:
   m_ObjectHideFlags: 0

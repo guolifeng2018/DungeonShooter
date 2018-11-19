@@ -22,13 +22,13 @@ public abstract class BulletLauncherBase
     
     public abstract void Fire(Vector3 direction);
 
-    public static BulletLauncherBase CreateBulletLauncherBase(BulletLauncherDataBase data, GameObject gameObject)
+    public static BulletLauncherBase CreateBulletLauncherBase(BulletLauncherDataBase data, GameObject gameObject, BulletBase tempBullet)
     {
         BulletLauncherBase launcher = null;
         switch (data.m_launcherType)
         {
                 case EBulletLauncherType.SingleBullet:
-                    launcher = new SingleBulletLauncher(data, gameObject);
+                    launcher = new SingleBulletLauncher(data, gameObject, tempBullet);
                     break;
                 case EBulletLauncherType.Laser:
                     break;

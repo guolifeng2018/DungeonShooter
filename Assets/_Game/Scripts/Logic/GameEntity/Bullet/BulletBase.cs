@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class BulletBase : GameEntityBase
 {
-    public static Action<BulletBase> OnBulletDead;
+    public Action<BulletBase> OnBulletDead;
 
     protected Animator m_animator;
 

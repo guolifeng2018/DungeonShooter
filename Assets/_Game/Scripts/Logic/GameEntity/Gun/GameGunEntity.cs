@@ -2,6 +2,8 @@
 
 public class GameGunEntity : GameEntityBase
 {
+    public BulletBase m_tempBullet;
+    
     #region Construction
 
     protected GameGunProps m_props;
@@ -24,7 +26,7 @@ public class GameGunEntity : GameEntityBase
         m_props.m_bulletLauncherData =
             BulletLauncherDataBase.CreateBulletLauncherData(EBulletLauncherType.SingleBullet);
 
-        m_bulletLauncher = BulletLauncherBase.CreateBulletLauncherBase(m_props.m_bulletLauncherData, gameObject);
+        m_bulletLauncher = BulletLauncherBase.CreateBulletLauncherBase(m_props.m_bulletLauncherData, gameObject, m_tempBullet);
 
         m_gunNode = ObjectCommon.GetChild(gameObject, "gun_sprite");
         m_recordSpritePosition = m_gunNode.transform.localPosition;
@@ -63,7 +65,7 @@ public class GameGunEntity : GameEntityBase
 
         Debug.Log("Fire !!!!");
 
-        m_bulletLauncher.Fire(transform.worldToLocalMatrix * transform.forward);
+        m_bulletLauncher.Fire(transform.right);
 
         //todo:显示枪口喷火
 

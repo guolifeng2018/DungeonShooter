@@ -7,7 +7,7 @@ public class GamePlayerProps
     /// <summary>
     /// 移动速度
     /// </summary>
-    public float m_speed = 1.5f;
+    public float m_speed = 2.2f;
 
     /// <summary>
     /// 允许携带枪个数

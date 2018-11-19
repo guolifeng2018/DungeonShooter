@@ -8,6 +8,8 @@ public class SingleBullet : BulletBase
 
     private bool m_isAwake;
     private float m_deadTime;
+    
+    private static WaitForSeconds m_waitForSeconds;
 
     public override void Init()
     {
@@ -25,6 +27,7 @@ public class SingleBullet : BulletBase
         if (m_isAwake && m_launcherData != null)
         {
             transform.position += m_direction.normalized * Time.deltaTime * m_launcherData.m_bulletSpeed;
+            Debug.LogError("Direction : "  + m_direction);
             if (Time.time >= m_deadTime)
             {
                 BulletHide();
@@ -47,6 +50,12 @@ public class SingleBullet : BulletBase
         gameObject.SetActive(true);
         m_animator.Play(m_launcherData.m_fireAnimName);
         m_isAwake = true;
+
+        if (m_waitForSeconds == null)
+        {
+            float time = GetFadeAnimLength(m_launcherData.m_fadeAnimName);
+            m_waitForSeconds = new WaitForSeconds(time);
+        }
     }
 
     public override void BulletHide()
@@ -54,21 +63,47 @@ public class SingleBullet : BulletBase
         m_isAwake = false;
         m_animator.Play(m_launcherData.m_fadeAnimName);
 
+        float time = GetFadeAnimLength(m_launcherData.m_fadeAnimName);
+        if (time > 0)
+        {
+            StartCoroutine(WaitToDestory());
+        }
+        else
+        {
+            OnBulletDeadAction();
+        }
     }
 
-    //private float GetFadeAnimLength()
-    //{
-    //    if (m_animator != null)
-    //    {
-    //        AnimatorClipInfo[] clips = m_animator.GetCurrentAnimatorClipInfo(0);
-    //        for (int i = 0; i < clips.Length; i++)
-    //        {
-    //            if()
-    //        }
-    //    }
-    //}
+    private void OnBulletDeadAction()
+    {
+        if (OnBulletDead != null)
+        {
+            OnBulletDead(this);
+        }
+    }
 
+    private IEnumerator WaitToDestory()
+    {
+        yield return m_waitForSeconds;
+        OnBulletDeadAction();
+    }
 
+    private float GetFadeAnimLength(string name)
+    {
+        if (m_animator != null)
+        {
+            AnimatorClipInfo[] clips = m_animator.GetCurrentAnimatorClipInfo(0);
+            for (int i = 0; i < clips.Length; i++)
+            {
+                if (clips[i].clip != null && clips[i].clip.name.Equals(name))
+                {
+                    return clips[i].clip.length;
+                }
+            }
+        }
+
+        return 0f;
+    }
 
     private void OnTriggerEnter()
     {
