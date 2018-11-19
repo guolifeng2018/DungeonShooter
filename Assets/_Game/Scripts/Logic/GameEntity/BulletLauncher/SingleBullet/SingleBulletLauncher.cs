@@ -26,6 +26,21 @@ public class SingleBulletLauncher : BulletLauncherBase
         }
     }
 
+    public void Dispose()
+    {
+        for (int i = 0; i < m_cacheBullets.Count; i++)
+        {
+            m_cacheBullets[i].Dispose();
+        }
+        m_cacheBullets.Clear();
+
+        for (int i = 0; i < m_bullets.Count; i++)
+        {
+            m_bullets[i].Dispose();
+        }
+        m_bullets.Clear();
+    }
+
     public override void Fire(Vector3 direction)
     {
         m_fireTime = Time.time;

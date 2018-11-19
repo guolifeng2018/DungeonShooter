@@ -90,15 +90,15 @@ public class SingleBullet : BulletBase
 
     private float GetFadeAnimLength(string name)
     {
-        if (m_animator != null)
+        if(m_animator == null) { return 0f; }
+        RuntimeAnimatorController animControl = m_animator.runtimeAnimatorController;
+        if (animControl == null) { return 0f; }
+        AnimationClip[] clips = animControl.animationClips;
+        for (int i = 0; i < clips.Length; i++)
         {
-            AnimatorClipInfo[] clips = m_animator.GetCurrentAnimatorClipInfo(0);
-            for (int i = 0; i < clips.Length; i++)
+            if (clips[i] != null && clips[i].name.Equals(name))
             {
-                if (clips[i].clip != null && clips[i].clip.name.Equals(name))
-                {
-                    return clips[i].clip.length;
-                }
+                return clips[i].length;
             }
         }
 
