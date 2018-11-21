@@ -43,6 +43,7 @@ public class GameGunEntity : GameEntityBase
 
     public void UpdateGunDirection(Vector2 direction, bool playerFaceToRight)
     {
+        if(direction == Vector2.zero){return;}
         Vector2 xDirPositive = Vector2.right;
         if (!playerFaceToRight)
         {

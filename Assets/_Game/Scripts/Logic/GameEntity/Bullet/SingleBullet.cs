@@ -27,7 +27,6 @@ public class SingleBullet : BulletBase
         if (m_isAwake && m_launcherData != null)
         {
             transform.position += m_direction.normalized * Time.deltaTime * m_launcherData.m_bulletSpeed;
-            Debug.LogError("Direction : "  + m_direction);
             if (Time.time >= m_deadTime)
             {
                 BulletHide();
@@ -53,8 +52,7 @@ public class SingleBullet : BulletBase
 
         if (m_waitForSeconds == null)
         {
-            float time = GetFadeAnimLength(m_launcherData.m_fadeAnimName);
-            m_waitForSeconds = new WaitForSeconds(time);
+            m_waitForSeconds = new WaitForSeconds(m_launcherData.m_fadeBulletTime);
         }
     }
 
@@ -62,16 +60,8 @@ public class SingleBullet : BulletBase
     {
         m_isAwake = false;
         m_animator.Play(m_launcherData.m_fadeAnimName);
-
-        float time = GetFadeAnimLength(m_launcherData.m_fadeAnimName);
-        if (time > 0)
-        {
-            StartCoroutine(WaitToDestory());
-        }
-        else
-        {
-            OnBulletDeadAction();
-        }
+       
+        StartCoroutine(WaitToDestory());
     }
 
     private void OnBulletDeadAction()
@@ -86,23 +76,6 @@ public class SingleBullet : BulletBase
     {
         yield return m_waitForSeconds;
         OnBulletDeadAction();
-    }
-
-    private float GetFadeAnimLength(string name)
-    {
-        if (m_animator != null)
-        {
-            AnimatorClipInfo[] clips = m_animator.GetCurrentAnimatorClipInfo(0);
-            for (int i = 0; i < clips.Length; i++)
-            {
-                if (clips[i].clip != null && clips[i].clip.name.Equals(name))
-                {
-                    return clips[i].clip.length;
-                }
-            }
-        }
-
-        return 0f;
     }
 
     private void OnTriggerEnter()

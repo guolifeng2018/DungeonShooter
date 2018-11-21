@@ -26,7 +26,7 @@ public class SingleBulletLauncherData : BulletLauncherDataBase
     /// <summary>
     /// 子弹生存时间
     /// </summary>
-    public float m_lifeTime = 1f;
+    public float m_lifeTime = 0.5f;
 
     /// <summary>
     /// 子弹速度
@@ -42,6 +42,11 @@ public class SingleBulletLauncherData : BulletLauncherDataBase
     /// 子弹碰撞后发生动画
     /// </summary>
     public string m_fadeAnimName = "bullet_001_fade";
+    
+    /// <summary>
+    /// 子弹死亡时间
+    /// </summary>
+    public float m_fadeBulletTime = 0.25f;
 
     public SingleBulletLauncherData()
         :base(EBulletLauncherType.SingleBullet)
