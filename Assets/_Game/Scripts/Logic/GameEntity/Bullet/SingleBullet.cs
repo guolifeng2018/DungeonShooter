@@ -78,25 +78,7 @@ public class SingleBullet : BulletBase
         OnBulletDeadAction();
     }
 
-<<<<<<< HEAD
-=======
-    private float GetFadeAnimLength(string name)
-    {
-        if(m_animator == null) { return 0f; }
-        RuntimeAnimatorController animControl = m_animator.runtimeAnimatorController;
-        if (animControl == null) { return 0f; }
-        AnimationClip[] clips = animControl.animationClips;
-        for (int i = 0; i < clips.Length; i++)
-        {
-            if (clips[i] != null && clips[i].name.Equals(name))
-            {
-                return clips[i].length;
-            }
-        }
-
-        return 0f;
-    }
-
+    private void OnTriggerEnter()
     {
         BulletHide();
     }
